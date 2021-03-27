@@ -6,4 +6,6 @@ abstract class StringConstants {
   static String appName = 'Sencorder';
   static String okay = 'okay'.tr;
   static String somethingWentWrong = 'somethingWentWrong'.tr;
+  static String vocieRecorder = 'vocieRecorder'.tr;
+  static String messageHint = 'messageHint'.tr;
 }

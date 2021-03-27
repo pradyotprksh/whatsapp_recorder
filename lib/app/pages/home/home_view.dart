@@ -9,6 +9,12 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) => GetBuilder<HomeController>(
         builder: (_controller) => Scaffold(
           backgroundColor: Get.theme.backgroundColor,
+          body: Column(
+            children: [
+              const Spacer(),
+              MessageBox(),
+            ],
+          ),
         ),
       );
 }

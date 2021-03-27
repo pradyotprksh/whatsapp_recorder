@@ -48,9 +48,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: StringConstants.appName,
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: Styles.lightTheme,
-      darkTheme: Styles.lightTheme,
+      darkTheme: Styles.darkTheme,
       fallbackLocale: const Locale(
         DeviceConstants.defaultLang,
       ),

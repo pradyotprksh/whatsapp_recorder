@@ -15,6 +15,8 @@ class TranslationsFile extends Translations {
         'en': {
           'okay': 'Okay',
           'somethingWentWrong': 'Oops! Something went wrong.',
+          'vocieRecorder': 'Send a recorded message',
+          'messageHint': 'Message',
         },
       };
 }
