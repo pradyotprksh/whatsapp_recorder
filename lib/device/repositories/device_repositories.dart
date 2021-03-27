@@ -4,7 +4,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:product_list/app/app.dart';
-import 'package:product_list/data/data.dart';
 import 'package:product_list/device/device.dart';
 import 'package:product_list/domain/domain.dart';
 
@@ -33,18 +32,8 @@ class DeviceRepository extends DomainRepository {
     var box = _getBox();
     var value = box.get(key) as String;
     if (key == DeviceConstants.localLang) {
-      value ??= DataConstants.defaultLang;
+      value ??= DeviceConstants.defaultLang;
     }
     return value;
-  }
-
-  @override
-  Future<CategoryList> getCatgories() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Products> getProductList({String categoryId}) {
-    throw UnimplementedError();
   }
 }

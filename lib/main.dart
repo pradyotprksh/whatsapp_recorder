@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:product_list/app/app.dart';
-import 'package:product_list/data/data.dart';
 import 'package:product_list/device/device.dart';
 import 'package:product_list/domain/domain.dart';
 
@@ -25,13 +24,6 @@ Future<void> initServices() async {
         Repository(
           Get.put(
             DeviceRepository(),
-          ),
-          Get.put(
-            DataRepository(
-              Get.put(
-                ConnectHelper(),
-              ),
-            ),
           ),
         ),
       ),
@@ -60,7 +52,7 @@ class MyApp extends StatelessWidget {
       theme: Styles.lightTheme,
       darkTheme: Styles.lightTheme,
       fallbackLocale: const Locale(
-        DataConstants.defaultLang,
+        DeviceConstants.defaultLang,
       ),
       locale: Locale(
         localLang,

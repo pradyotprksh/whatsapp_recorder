@@ -1,4 +1,3 @@
-import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:product_list/app/app.dart';
 import 'package:get/get.dart';
@@ -47,10 +46,6 @@ abstract class Utility {
       printILog(message);
     }
   }
-
-  /// Returns true if the internet connection is available.
-  static Future<bool> isNetworkAvailable() async =>
-      await DataConnectionChecker().hasConnection;
 
   /// Show a message to the user.
   ///
