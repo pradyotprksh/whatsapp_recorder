@@ -1,4 +1,4 @@
-package com.pradyotprksh.product_list
+package com.pradyotprksh.sencorder
 
 import io.flutter.embedding.android.FlutterActivity
 

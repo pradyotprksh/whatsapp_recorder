@@ -1,4 +1,4 @@
-import 'package:product_list/app/app.dart';
+import 'package:sencorder/app/app.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';

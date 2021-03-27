@@ -1,5 +1,5 @@
-import 'package:product_list/device/device.dart';
-import 'package:product_list/domain/domain.dart';
+import 'package:sencorder/device/device.dart';
+import 'package:sencorder/domain/domain.dart';
 
 /// The main repository which will get the data from [DeviceRepository].
 class Repository extends DomainRepository {

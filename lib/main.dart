@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:product_list/app/app.dart';
-import 'package:product_list/device/device.dart';
-import 'package:product_list/domain/domain.dart';
+import 'package:sencorder/app/app.dart';
+import 'package:sencorder/device/device.dart';
+import 'package:sencorder/domain/domain.dart';
 
 /// The entry point of the application
 void main() async {

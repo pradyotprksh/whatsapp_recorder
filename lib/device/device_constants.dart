@@ -1,4 +1,4 @@
-import 'package:product_list/device/device.dart';
+import 'package:sencorder/device/device.dart';
 
 /// A chunk of shared preference keys which will
 /// be used by [DeviceRepository] to get/save the data locally.

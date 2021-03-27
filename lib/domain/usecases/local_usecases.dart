@@ -1,4 +1,4 @@
-import 'package:product_list/domain/domain.dart';
+import 'package:sencorder/domain/domain.dart';
 
 /// Use case for getting the data from local database
 class LocalUsecases {

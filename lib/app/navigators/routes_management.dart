@@ -1,4 +1,4 @@
-import 'package:product_list/app/app.dart';
+import 'package:sencorder/app/app.dart';
 import 'package:get/get.dart';
 
 /// A chunk of routes taken in the application.

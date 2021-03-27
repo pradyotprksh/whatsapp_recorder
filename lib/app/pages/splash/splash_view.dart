@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:product_list/app/app.dart';
+import 'package:sencorder/app/app.dart';
 import 'package:get/get.dart';
 
 /// The splash view which will show the splash screen and perform the basic

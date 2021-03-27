@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:product_list/app/app.dart';
+import 'package:sencorder/app/app.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:logger/logger.dart';
-import 'package:product_list/domain/domain.dart';
+import 'package:sencorder/domain/domain.dart';
 
 /// A chunk of methods which can be used to
 /// the common operations performed everywhere

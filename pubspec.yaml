@@ -1,4 +1,4 @@
-name: product_list
+name: sencorder
 description: A flutter application which will help in seeing the list of categories and products inside them.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -10,16 +10,10 @@ environment:
 
 dependencies:
 
-  carousel_slider: ^3.0.0
-
   cupertino_icons: ^1.0.2
-
-  data_connection_checker: ^0.3.4
 
   flutter:
     sdk: flutter
-
-  flutter_blurhash: ^0.5.0
 
   flutter_secure_storage: ^4.1.0
 

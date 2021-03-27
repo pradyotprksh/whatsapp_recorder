@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:product_list/app/app.dart';
+import 'package:sencorder/app/app.dart';
 
 /// A list of styles used all over the application.
 abstract class Styles {

@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:product_list/app/app.dart';
-import 'package:product_list/device/device.dart';
-import 'package:product_list/domain/domain.dart';
+import 'package:sencorder/app/app.dart';
+import 'package:sencorder/device/device.dart';
+import 'package:sencorder/domain/domain.dart';
 
 /// Repositories that communicate with the platform e.g. GPS
 class DeviceRepository extends DomainRepository {

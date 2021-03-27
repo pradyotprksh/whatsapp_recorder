@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:product_list/app/app.dart';
+import 'package:sencorder/app/app.dart';
 
 /// A center progress bar indicator.
 class CenterCircularProgressbar extends StatelessWidget {

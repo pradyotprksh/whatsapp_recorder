@@ -1,4 +1,4 @@
-import 'package:product_list/app/app.dart';
+import 'package:sencorder/app/app.dart';
 import 'package:get/get.dart';
 
 /// The splash controller which will be used to control the [SplashView].
