@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
 import 'package:sencorder/app/app.dart';
 import 'package:get/get.dart';
@@ -19,13 +21,26 @@ class HomeController extends GetxController {
   /// Start the recorder
   void startRecorder() async {
     if (await _homePresenter.isAudioPermissionGranted()) {
-      if (_recorder == null) {
-        await _initializedRecorder();
-      }
+      await _initializedRecorder();
+      await _recorder.start();
+      var recording = await _recorder.current(channel: 0);
+      _current = recording;
+      const tick = Duration(
+        milliseconds: 50,
+      );
+      Timer.periodic(tick, (Timer t) async {
+        if (recordStatus == RecordingStatus.Stopped) {
+          t.cancel();
+        }
+        _current = await _recorder.current(channel: 0);
+        recordStatus = _current.status;
+        updateRecordingStatus(recordStatus);
+      });
       updateRecordingStatus(RecordingStatus.Recording);
     }
   }
 
+  /// Update the recording status with [currentStatus]
   void updateRecordingStatus(RecordingStatus currentStatus) {
     recordStatus = currentStatus;
     update();
@@ -51,5 +66,29 @@ class HomeController extends GetxController {
     await _recorder.initialized;
     _current = await _recorder.current(channel: 0);
     Utility.printILog(_current.status.toString());
+  }
+
+  /// End the current recording. And if there is any recording then save it
+  void endRecorder(DraggableDetails details) async {
+    if (recordStatus == RecordingStatus.Recording) {
+      var result = await _recorder.stop();
+      Utility.printILog(result.duration.toString());
+      Utility.printILog(result.path);
+      updateRecordingStatus(RecordingStatus.Stopped);
+    }
+  }
+
+  /// Cancel the recoring
+  ///
+  /// Need to handle swipe and cancel
+  void cancelRecording(DragUpdateDetails details) {
+    // if (details != null) {
+    //   if (details.delta.dx > -0.42) {
+    //     if (_recorder != null) {
+    //       _recorder.stop();
+    //     }
+    //     updateRecordingStatus(RecordingStatus.Stopped);
+    //   }
+    // }
   }
 }
