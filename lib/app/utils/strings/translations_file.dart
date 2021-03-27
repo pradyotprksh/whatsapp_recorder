@@ -17,6 +17,9 @@ class TranslationsFile extends Translations {
           'somethingWentWrong': 'Oops! Something went wrong.',
           'vocieRecorder': 'Send a recorded message',
           'messageHint': 'Message',
+          'slideToCancel': 'Slide To Cancel',
+          'recordPermission':
+              'Allow audio recorder permission to allow us to record your message.',
         },
       };
 }

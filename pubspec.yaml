@@ -15,17 +15,21 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_audio_recorder: any
+
   flutter_secure_storage: ^4.1.0
 
   get: ^3.26.0
 
-  google_fonts: ^2.0.0
+  google_fonts: any
 
   hive: ^2.0.0
 
   intl: ^0.17.0
 
   logger: ^0.9.4
+
+  path_provider: ^1.1.0
 
   pedantic: ^1.11.0
 

@@ -10,4 +10,8 @@ class Repository extends DomainRepository {
 
   @override
   String getStringValue(String key) => _deviceRepository.getStringValue(key);
+
+  @override
+  Future<bool> isAudioPermissionGranted() async =>
+      await _deviceRepository.isAudioPermissionGranted();
 }

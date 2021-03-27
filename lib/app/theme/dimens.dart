@@ -88,6 +88,13 @@ abstract class Dimens {
     Dimens.five,
   );
 
+  static const EdgeInsets edgeInsets15_5_15_5 = EdgeInsets.fromLTRB(
+    Dimens.ten + Dimens.five,
+    Dimens.five,
+    Dimens.ten + Dimens.five,
+    Dimens.five,
+  );
+
   static const EdgeInsets edgeInsets5_0_5_0 = EdgeInsets.fromLTRB(
     Dimens.five,
     Dimens.zero,

@@ -4,4 +4,7 @@ abstract class DomainRepository {
   ///
   /// [key] : The key whose value is needed.
   String getStringValue(String key);
+
+  /// Check if audio permission is granted or not
+  Future<bool> isAudioPermissionGranted();
 }

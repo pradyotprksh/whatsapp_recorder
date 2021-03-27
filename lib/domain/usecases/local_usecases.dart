@@ -9,4 +9,8 @@ class LocalUsecases {
 
   /// Get the string value for the [key].
   String getStringValue(String key) => _repository.getStringValue(key);
+
+  /// Check if audio permission is granted or not
+  Future<bool> isAudioPermissionGranted() async =>
+      await _repository.isAudioPermissionGranted();
 }

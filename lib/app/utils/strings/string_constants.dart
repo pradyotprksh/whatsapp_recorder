@@ -8,4 +8,6 @@ abstract class StringConstants {
   static String somethingWentWrong = 'somethingWentWrong'.tr;
   static String vocieRecorder = 'vocieRecorder'.tr;
   static String messageHint = 'messageHint'.tr;
+  static String recordPermission = 'recordPermission'.tr;
+  static String slideToCancel = 'slideToCancel'.tr;
 }
