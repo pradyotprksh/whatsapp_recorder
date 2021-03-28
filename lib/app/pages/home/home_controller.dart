@@ -120,9 +120,9 @@ class HomeController extends GetxController {
   }
 
   /// Cancel the recoring
-  void cancelRecording(DragUpdateDetails details) async {
-    if (details != null) {
-      if (details.delta.distance > 1) {
+  void cancelRecording(PointerMoveEvent event) async {
+    if (event != null) {
+      if (event.position.dx < (Get.size.width / 1.5)) {
         if (_recorder != null) {
           await _recorder.stop();
         }

@@ -13,7 +13,7 @@ class SplashView extends StatelessWidget {
           body: Center(
             child: Text(
               StringConstants.appName,
-              style: Styles.bold30,
+              style: Styles.oppositeBoldl30,
             ),
           ),
         ),

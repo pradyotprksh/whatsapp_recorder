@@ -34,34 +34,32 @@ class MessageBox extends StatelessWidget {
                               ),
                             ],
                           )
-                        : TextFormField(
-                            decoration: InputDecoration(
-                              hintText: StringConstants.messageHint,
-                              hintStyle: Styles.oppositeNormal14,
-                              border: InputBorder.none,
-                            ),
+                        : Text(
+                            StringConstants.messageHint,
                           ),
               ),
             ),
-            LongPressDraggable(
-              axis: Axis.horizontal,
-              feedback: FloatingActionButton(
-                onPressed: () {},
-                backgroundColor: Get.theme.primaryColor,
-                child: Icon(
-                  Icons.keyboard_voice_outlined,
-                  color: Styles.iconThemeData.color,
+            Listener(
+              onPointerMove: Get.find<HomeController>().cancelRecording,
+              child: LongPressDraggable(
+                axis: Axis.horizontal,
+                feedback: FloatingActionButton(
+                  onPressed: () {},
+                  backgroundColor: Get.theme.primaryColor,
+                  child: Icon(
+                    Icons.keyboard_voice_outlined,
+                    color: Styles.iconThemeData.color,
+                  ),
                 ),
-              ),
-              childWhenDragging: Dimens.box0,
-              onDragStarted: Get.find<HomeController>().startRecorder,
-              onDragEnd: Get.find<HomeController>().endRecorder,
-              onDragUpdate: Get.find<HomeController>().cancelRecording,
-              child: IconButton(
-                onPressed: Get.find<HomeController>().checkForPermission,
-                icon: Icon(
-                  Icons.keyboard_voice_outlined,
-                  color: Styles.iconThemeData.color,
+                childWhenDragging: Dimens.box0,
+                onDragStarted: Get.find<HomeController>().startRecorder,
+                onDragEnd: Get.find<HomeController>().endRecorder,
+                child: IconButton(
+                  onPressed: Get.find<HomeController>().checkForPermission,
+                  icon: Icon(
+                    Icons.keyboard_voice_outlined,
+                    color: Styles.iconThemeData.color,
+                  ),
                 ),
               ),
             ),
