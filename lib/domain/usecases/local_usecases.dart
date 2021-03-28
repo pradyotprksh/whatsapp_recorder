@@ -13,4 +13,12 @@ class LocalUsecases {
   /// Check if audio permission is granted or not
   Future<bool> isAudioPermissionGranted() async =>
       await _repository.isAudioPermissionGranted();
+
+  /// Get data for the [key]
+  List<dynamic> getListValue(String key) => _repository.getListValue(key);
+
+  /// Save data for the [key]
+  void saveValue(dynamic key, dynamic value) {
+    _repository.saveValue(key, value);
+  }
 }

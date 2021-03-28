@@ -6,6 +6,8 @@ import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
 import 'package:sencorder/app/app.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sencorder/domain/domain.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 /// The splash controller which will be used to control the [HomeView].
 class HomeController extends GetxController {
@@ -15,28 +17,56 @@ class HomeController extends GetxController {
 
   /// Recording details
   FlutterAudioRecorder _recorder;
-  Recording _current;
   RecordingStatus recordStatus = RecordingStatus.Unset;
+
+  /// List of recording
+  List<Recordings> savedRecordings = <Recordings>[];
+
+  AudioPlayer audioPlayer;
+
+  @override
+  void onInit() {
+    _getListOfRecordings();
+    audioPlayer = AudioPlayer();
+    audioPlayer.onPlayerCompletion.listen((event) {
+      _pauseAllRecordings();
+    });
+    super.onInit();
+  }
+
+  /// Get the list of recordings
+  void _getListOfRecordings() {
+    var recordings = _homePresenter.getRecodingList();
+
+    savedRecordings.clear();
+
+    for (var recording in recordings) {
+      if (recording is Map) {
+        var path = recording.keys.first as String;
+        var duration = recording.values.first as String;
+
+        savedRecordings.add(
+          Recordings(
+            recordingPath: path,
+            recordingDuration: duration,
+            isPlaying: false,
+          ),
+        );
+      }
+    }
+
+    update();
+  }
 
   /// Start the recorder
   void startRecorder() async {
-    if (await _homePresenter.isAudioPermissionGranted()) {
-      await _initializedRecorder();
-      await _recorder.start();
-      var recording = await _recorder.current(channel: 0);
-      _current = recording;
-      const tick = Duration(
-        milliseconds: 50,
-      );
-      Timer.periodic(tick, (Timer t) async {
-        if (recordStatus == RecordingStatus.Stopped) {
-          t.cancel();
-        }
-        _current = await _recorder.current(channel: 0);
-        recordStatus = _current.status;
-        updateRecordingStatus(recordStatus);
-      });
-      updateRecordingStatus(RecordingStatus.Recording);
+    if (await PermissionHandler.isAllowedToRecord()) {
+      if (await _homePresenter.isAudioPermissionGranted()) {
+        await _initializedRecorder();
+        _pauseAllRecordings();
+        await _recorder.start();
+        updateRecordingStatus(RecordingStatus.Recording);
+      }
     }
   }
 
@@ -52,43 +82,98 @@ class HomeController extends GetxController {
 
   /// Initializing the recorder if not initialzed
   Future<void> _initializedRecorder() async {
-    var customPath = '/sencorder_';
+    var recordingPath = '/sencorder_';
     Directory appDocDirectory;
     if (GetPlatform.isIOS) {
       appDocDirectory = await getApplicationDocumentsDirectory();
     } else {
       appDocDirectory = await getExternalStorageDirectory();
     }
-    customPath = appDocDirectory.path +
-        customPath +
+    recordingPath = appDocDirectory.path +
+        recordingPath +
         DateTime.now().millisecondsSinceEpoch.toString();
-    _recorder = FlutterAudioRecorder(customPath, audioFormat: AudioFormat.WAV);
+    _recorder = FlutterAudioRecorder(
+      recordingPath,
+      audioFormat: AudioFormat.WAV,
+    );
     await _recorder.initialized;
-    _current = await _recorder.current(channel: 0);
-    Utility.printILog(_current.status.toString());
   }
 
   /// End the current recording. And if there is any recording then save it
   void endRecorder(DraggableDetails details) async {
     if (recordStatus == RecordingStatus.Recording) {
       var result = await _recorder.stop();
-      Utility.printILog(result.duration.toString());
-      Utility.printILog(result.path);
+      var recordings = <dynamic>[];
+      var saveRecordings = _homePresenter.getRecodingList() ?? recordings;
+      recordings.addAll(saveRecordings);
+      if (recordings != null) {
+        recordings.add(
+          <String, String>{
+            result.path: result.duration.inSeconds.toString(),
+          },
+        );
+        _homePresenter.saveRecordings(recordings);
+      }
       updateRecordingStatus(RecordingStatus.Stopped);
+      _getListOfRecordings();
     }
   }
 
   /// Cancel the recoring
-  ///
-  /// Need to handle swipe and cancel
-  void cancelRecording(DragUpdateDetails details) {
-    // if (details != null) {
-    //   if (details.delta.dx > -0.42) {
-    //     if (_recorder != null) {
-    //       _recorder.stop();
-    //     }
-    //     updateRecordingStatus(RecordingStatus.Stopped);
-    //   }
-    // }
+  void cancelRecording(DragUpdateDetails details) async {
+    if (details != null) {
+      if (details.delta.distance > 1) {
+        if (_recorder != null) {
+          await _recorder.stop();
+        }
+        updateRecordingStatus(RecordingStatus.Stopped);
+      }
+    }
+  }
+
+  /// Play audio for the positioned recording
+  void playAudio(int position) async {
+    if (_isAnyAudioPlaying() == position) {
+      _pauseAllRecordings();
+    } else if (_isAnyAudioPlaying() != -1) {
+      _pauseAllRecordings();
+      _startPlaying(position);
+    } else {
+      _startPlaying(position);
+    }
+  }
+
+  /// Checks if any audio is playing
+  int _isAnyAudioPlaying() {
+    for (var i = 0; i < savedRecordings.length; i++) {
+      if (savedRecordings[i].isPlaying) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  /// Pause all the recordings
+  void _pauseAllRecordings() async {
+    await audioPlayer.stop();
+    for (var recording in savedRecordings) {
+      if (recording.isPlaying) {
+        recording.isPlaying = false;
+      }
+    }
+    update();
+  }
+
+  /// Start playing
+  void _startPlaying(int position) async {
+    var recording = savedRecordings[position];
+    if (recording != null) {
+      await audioPlayer.play(
+        recording.recordingPath,
+        isLocal: true,
+      );
+      savedRecordings[position].isPlaying = true;
+      update();
+    }
   }
 }

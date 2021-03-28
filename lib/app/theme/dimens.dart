@@ -53,6 +53,13 @@ abstract class Dimens {
     Dimens.zero,
   );
 
+  static EdgeInsets edgeInsets60P_2_10_2 = EdgeInsets.fromLTRB(
+    getWidthPercent(0.55),
+    Dimens.two,
+    Dimens.ten,
+    Dimens.two,
+  );
+
   static const EdgeInsets edgeInsets15_0_15_0 = EdgeInsets.fromLTRB(
     Dimens.ten + Dimens.five,
     Dimens.zero,

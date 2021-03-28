@@ -45,26 +45,27 @@ class MessageBox extends StatelessWidget {
             ),
             LongPressDraggable(
               axis: Axis.horizontal,
-              feedback: getRecorderButton(),
+              feedback: FloatingActionButton(
+                onPressed: () {},
+                backgroundColor: Get.theme.primaryColor,
+                child: Icon(
+                  Icons.keyboard_voice_outlined,
+                  color: Styles.iconThemeData.color,
+                ),
+              ),
               childWhenDragging: Dimens.box0,
               onDragStarted: Get.find<HomeController>().startRecorder,
               onDragEnd: Get.find<HomeController>().endRecorder,
               onDragUpdate: Get.find<HomeController>().cancelRecording,
-              child: getRecorderButton(),
+              child: IconButton(
+                onPressed: Get.find<HomeController>().checkForPermission,
+                icon: Icon(
+                  Icons.keyboard_voice_outlined,
+                  color: Styles.iconThemeData.color,
+                ),
+              ),
             ),
           ],
-        ),
-      );
-
-  /// Returns the recording button
-  Widget getRecorderButton() => Material(
-        color: Colors.transparent,
-        child: IconButton(
-          onPressed: Get.find<HomeController>().checkForPermission,
-          icon: Icon(
-            Icons.keyboard_voice_outlined,
-            color: Styles.iconThemeData.color,
-          ),
         ),
       );
 }

@@ -14,4 +14,12 @@ class Repository extends DomainRepository {
   @override
   Future<bool> isAudioPermissionGranted() async =>
       await _deviceRepository.isAudioPermissionGranted();
+
+  @override
+  List<dynamic> getListValue(String key) => _deviceRepository.getListValue(key);
+
+  @override
+  void saveValue(dynamic key, dynamic value) {
+    _deviceRepository.saveValue(key, value);
+  }
 }

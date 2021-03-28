@@ -10,4 +10,6 @@ abstract class StringConstants {
   static String messageHint = 'messageHint'.tr;
   static String recordPermission = 'recordPermission'.tr;
   static String slideToCancel = 'slideToCancel'.tr;
+  static String play = 'play'.tr;
+  static String stop = 'stop'.tr;
 }

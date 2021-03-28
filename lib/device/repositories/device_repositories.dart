@@ -41,4 +41,17 @@ class DeviceRepository extends DomainRepository {
   @override
   Future<bool> isAudioPermissionGranted() async =>
       await FlutterAudioRecorder.hasPermissions;
+
+  @override
+  List<dynamic> getListValue(String key) {
+    var box = _getBox();
+    var value = box.get(key) as List<dynamic>;
+    value ??= <Map<String, String>>[];
+    return value;
+  }
+
+  @override
+  void saveValue(dynamic key, dynamic value) {
+    _getBox().put(key, value);
+  }
 }

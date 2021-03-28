@@ -18,6 +18,8 @@ class TranslationsFile extends Translations {
           'vocieRecorder': 'Send a recorded message',
           'messageHint': 'Message',
           'slideToCancel': 'Slide To Cancel',
+          'play': 'Play',
+          'stop': 'Stop',
           'recordPermission':
               'Allow audio recorder permission to allow us to record your message.',
         },

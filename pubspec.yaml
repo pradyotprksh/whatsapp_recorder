@@ -9,13 +9,14 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  audioplayers: ^0.17.0
 
   cupertino_icons: ^1.0.2
 
   flutter:
     sdk: flutter
 
-  flutter_audio_recorder: any
+  flutter_audio_recorder: ^0.5.5
 
   flutter_secure_storage: ^4.1.0
 
@@ -23,15 +24,15 @@ dependencies:
 
   google_fonts: any
 
-  hive: ^2.0.0
+  hive: ^1.4.4
 
-  intl: ^0.17.0
+  intl: ^0.16.0
 
   logger: ^0.9.4
 
-  path_provider: ^1.1.0
-
   pedantic: ^1.11.0
+
+  permission_handler: ^5.0.1+1
 
 dev_dependencies:
   flutter_test:

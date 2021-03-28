@@ -6,15 +6,15 @@ import 'package:get/get.dart';
 /// ui work.
 class HomeView extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => GetBuilder<HomeController>(
-        builder: (_controller) => Scaffold(
-          backgroundColor: Get.theme.backgroundColor,
-          body: Column(
-            children: [
-              const Spacer(),
-              MessageBox(),
-            ],
-          ),
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Get.theme.backgroundColor,
+        body: Column(
+          children: [
+            Expanded(
+              child: MessageList(),
+            ),
+            MessageBox(),
+          ],
         ),
       );
 }
