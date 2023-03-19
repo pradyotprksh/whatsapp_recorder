@@ -1,5 +1,5 @@
-import 'package:sencorder/app/app.dart';
 import 'package:get/get.dart';
+import 'package:sencorder/app/app.dart';
 
 part 'app_routes.dart';
 
@@ -17,14 +17,14 @@ class AppPages {
   );
 
   static final pages = [
-    GetPage(
+    GetPage<SplashView>(
       name: _Paths.splashScreen,
       transitionDuration: transitionDuration,
       page: () => SplashView(),
       binding: SplashBinding(),
       transition: Transition.native,
     ),
-    GetPage(
+    GetPage<HomeView>(
       name: _Paths.homeScreen,
       transitionDuration: transitionDuration,
       page: () => HomeView(),

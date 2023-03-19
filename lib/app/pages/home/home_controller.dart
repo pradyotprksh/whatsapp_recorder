@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
-import 'package:sencorder/app/app.dart';
+import 'package:flutter_audio_recorder2/flutter_audio_recorder2.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sencorder/app/app.dart';
 import 'package:sencorder/domain/domain.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 /// The splash controller which will be used to control the [HomeView].
 class HomeController extends GetxController {
@@ -16,7 +16,7 @@ class HomeController extends GetxController {
   final HomePresenter _homePresenter;
 
   /// Recording details
-  FlutterAudioRecorder _recorder;
+  FlutterAudioRecorder2 _recorder;
   RecordingStatus recordStatus = RecordingStatus.Unset;
 
   /// List of recording
@@ -28,7 +28,7 @@ class HomeController extends GetxController {
   void onInit() {
     _getListOfRecordings();
     audioPlayer = AudioPlayer();
-    audioPlayer.onPlayerCompletion.listen((event) {
+    audioPlayer.onPlayerComplete.listen((event) {
       _pauseAllRecordings();
     });
     super.onInit();
@@ -92,7 +92,7 @@ class HomeController extends GetxController {
     recordingPath = appDocDirectory.path +
         recordingPath +
         DateTime.now().millisecondsSinceEpoch.toString();
-    _recorder = FlutterAudioRecorder(
+    _recorder = FlutterAudioRecorder2(
       recordingPath,
       audioFormat: AudioFormat.WAV,
     );
@@ -169,8 +169,9 @@ class HomeController extends GetxController {
     var recording = savedRecordings[position];
     if (recording != null) {
       await audioPlayer.play(
-        recording.recordingPath,
-        isLocal: true,
+        AssetSource(
+          recording.recordingPath,
+        ),
       );
       savedRecordings[position].isPlaying = true;
       update();

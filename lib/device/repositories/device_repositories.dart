@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_audio_recorder/flutter_audio_recorder.dart';
+import 'package:flutter_audio_recorder2/flutter_audio_recorder2.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -40,7 +40,7 @@ class DeviceRepository extends DomainRepository {
 
   @override
   Future<bool> isAudioPermissionGranted() async =>
-      await FlutterAudioRecorder.hasPermissions;
+      await FlutterAudioRecorder2.hasPermissions;
 
   @override
   List<dynamic> getListValue(String key) {

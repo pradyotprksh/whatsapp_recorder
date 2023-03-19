@@ -7,15 +7,12 @@ import 'package:sencorder/app/app.dart';
 abstract class Styles {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    accentColorBrightness: Brightness.dark,
-    backgroundColor: Colors.white,
-    fontFamily: GoogleFonts.muli().fontFamily,
+    fontFamily: GoogleFonts.mulish().fontFamily,
     primaryColor: ColorsValue.primaryColor,
     primarySwatch: const MaterialColor(
       ColorsValue.primaryColorHex,
       ColorsValue.primaryColorSwatch,
     ),
-    accentColor: ColorsValue.accentColor,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     elevatedButtonTheme: elevatedButtonStyle,
     textButtonTheme: textButtonStyle,
@@ -23,128 +20,125 @@ abstract class Styles {
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    accentColorBrightness: Brightness.light,
-    backgroundColor: ColorsValue.darkBackgroundColor,
-    fontFamily: GoogleFonts.muli().fontFamily,
+    fontFamily: GoogleFonts.mulish().fontFamily,
     primaryColor: ColorsValue.primaryColor,
     primarySwatch: const MaterialColor(
       ColorsValue.primaryColorHex,
       ColorsValue.primaryColorSwatch,
     ),
-    accentColor: ColorsValue.accentColor,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     elevatedButtonTheme: elevatedButtonStyle,
     textButtonTheme: textButtonStyle,
   );
 
-  static TextStyle white15 = GoogleFonts.muli(
+  static TextStyle white15 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.five,
     color: Colors.white,
   );
 
-  static TextStyle white14 = GoogleFonts.muli(
+  static TextStyle white14 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.four,
     color: Colors.white,
   );
 
-  static TextStyle normal16 = GoogleFonts.muli(
+  static TextStyle normal16 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.six,
     color: ColorsValue.themeOppositeColor(),
   );
 
-  static TextStyle normal12 = GoogleFonts.muli(
+  static TextStyle normal12 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.two,
     color: ColorsValue.themeColor(),
   );
 
-  static TextStyle normal14 = GoogleFonts.muli(
+  static TextStyle normal14 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.four,
     color: ColorsValue.themeColor(),
   );
 
-  static TextStyle oppositeNormal14 = GoogleFonts.muli(
+  static TextStyle oppositeNormal14 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.four,
     color: ColorsValue.themeOppositeColor(),
   );
 
-  static TextStyle normal18 = GoogleFonts.muli(
+  static TextStyle normal18 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.eight,
     color: ColorsValue.themeColor(),
   );
 
-  static TextStyle boldl18 = GoogleFonts.muli(
+  static TextStyle boldl18 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.eight,
     fontWeight: FontWeight.bold,
     color: ColorsValue.themeColor(),
   );
 
-  static TextStyle boldl14 = GoogleFonts.muli(
+  static TextStyle boldl14 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.four,
     fontWeight: FontWeight.bold,
     color: ColorsValue.themeColor(),
   );
 
-  static TextStyle oppositeBoldl18 = GoogleFonts.muli(
+  static TextStyle oppositeBoldl18 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.eight,
     fontWeight: FontWeight.bold,
     color: ColorsValue.themeOppositeColor(),
   );
 
-  static TextStyle oppositeBoldl30 = GoogleFonts.muli(
+  static TextStyle oppositeBoldl30 = GoogleFonts.mulish(
     fontSize: Dimens.thirty,
     fontWeight: FontWeight.bold,
     color: ColorsValue.themeOppositeColor(),
   );
 
-  static TextStyle oppositeBoldl14 = GoogleFonts.muli(
+  static TextStyle oppositeBoldl14 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.four,
     fontWeight: FontWeight.bold,
     color: ColorsValue.themeOppositeColor(),
   );
 
-  static TextStyle oppositeNormal12 = GoogleFonts.muli(
+  static TextStyle oppositeNormal12 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.two,
     fontWeight: FontWeight.normal,
     color: ColorsValue.themeOppositeColor(),
   );
 
-  static TextStyle oppositeBoldl12 = GoogleFonts.muli(
+  static TextStyle oppositeBoldl12 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.two,
     fontWeight: FontWeight.bold,
     color: ColorsValue.themeOppositeColor(),
   );
 
-  static TextStyle subtitlel14 = GoogleFonts.muli(
+  static TextStyle subtitlel14 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.four,
     fontWeight: FontWeight.bold,
     color: ColorsValue.subtitleColor,
   );
 
-  static TextStyle accentBold14 = GoogleFonts.muli(
+  static TextStyle accentBold14 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.four,
     fontWeight: FontWeight.bold,
     color: ColorsValue.accentColor,
   );
 
-  static TextStyle subtitlel10 = GoogleFonts.muli(
+  static TextStyle subtitlel10 = GoogleFonts.mulish(
     fontSize: Dimens.ten,
     fontWeight: FontWeight.bold,
     color: ColorsValue.subtitleColor,
   );
 
-  static TextStyle bold30 = GoogleFonts.muli(
+  static TextStyle bold30 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.twenty,
     fontWeight: FontWeight.bold,
     color: ColorsValue.themeColor(),
   );
 
-  static TextStyle primaryBold20 = GoogleFonts.muli(
+  static TextStyle primaryBold20 = GoogleFonts.mulish(
     fontSize: Dimens.twenty,
     fontWeight: FontWeight.bold,
     color: ColorsValue.primaryColor,
   );
 
-  static TextStyle whiteBold30 = GoogleFonts.muli(
+  static TextStyle whiteBold30 = GoogleFonts.mulish(
     fontSize: Dimens.ten + Dimens.twenty,
     fontWeight: FontWeight.bold,
     color: Colors.white,
